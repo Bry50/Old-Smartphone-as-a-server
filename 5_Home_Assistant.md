@@ -8,7 +8,7 @@ https://www.home-assistant.io/installation/linux/#docker-compose).
 In theory, you can follow those instructions. However, I think it is better to create storage volumes first because, if you let  Docker make them, you will not have  permissions to modify them outside of Home assistant.
 
 #### 5.1) Create storage volumes
-So, create the storage volumes on the PostmarkerOS phone; I suggest:
+So, create the storage volumes on the PostmarketOS phone; I suggest:
 ```
 mkdir ~/volumes
 mkdir ~/volumes/hass
@@ -27,7 +27,7 @@ listener 1883 0.0.0.0
 #logging
 log_type none  
 ```
-( Ctrl- O & Ctrl-X to save and exit)
+( Ctrl-O & Ctrl-X to save and exit)
 
 #### 5.2) Docker firewall
 
@@ -37,7 +37,7 @@ PostmarketOS uses  'nftables' and the MQTT container could not communicate with 
 
 So.....to allow the MQTT container to talk to the Home Assistant container, I decided to stop the internal firewall (nothing to do with  my router firewall).
 
-Yeah... I know, not good...but.. I havrn't found a solution.
+Yeah... I know, not ideal...but.. I haven't found a solution.
 
 issue the following commands (to stop the  filewall starting onboot)
 ```
@@ -91,11 +91,11 @@ Obviously, change 'bryan' to your user name.
 
 The versions (eg :1.6.13) are optional, but I like to 'freeze' the versions to avoid surprises
   
-This gives instructions to pull ( download) the standard docker 'image' ( instructions) to build your 'container' (system). The volumes tell it where to store data and the network mode 'host' tells it not to isolate  each container as it would normally.
+This pulls (downloads) the home assistant 'image' to build your 'container' (system). The volumes tell it where to store data and the network mode 'host' tells it not to isolate  each container as it would normally.
 
 #### 5.4) Docker-compose up
 
-When run for the first time, the following instruction will cause docker  to pull (download) and extract the files. This is time consuming on the Nexus.
+When run for the first time, the following instruction will cause docker  to pull (download) and extract the files. This is time consuming on the Nexus and drains the battery. 
 ```
 sudo apt update
 sudo docker-compose pull
