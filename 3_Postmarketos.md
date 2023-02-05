@@ -15,9 +15,9 @@ With Nexus 5 device powered off and USB cable unplugged, hold down Volume Down a
 
 #### 3.2) OEM unlock
 Plug in the USB cable between PC and phone, then on the PC run:
-'''
+```
 $ sudo fastboot oem unlock
-'''
+```
 When prompted on the the phone device, use Volume Up/Down buttons to highlight 'Yes' choice, then press the Power button to select it.   
 
 #### 3.3) Initialization
@@ -67,7 +67,7 @@ Hopefully, you now have control of the phone from your computer.
 #### 3.7) Setup WIFI
 To set up the WIFI, in the SSH session
 ```
-sudo nmtui
+$sudo nmtui
 ```
 This gives a 'somewhat' intuitive screen where you  can add your WIFI credentials. 
 (Use a google search for 'nmtui' for instructions if needed).
@@ -136,14 +136,15 @@ I go more into the power supply in section 6. But if the battery is too low the 
 
 For me, even when plugged into a wall charger, 
 ```
-cat /sys/class/power_supply/bq24190-charger/input_current_limit
+$cat /sys/class/power_supply/bq24190-charger/input_current_limit
 ```
 always returns 500000 microamps (0.5 amp), which is the limit that a computer usb port can provide . This isn't sufficient for the long term.
 
 Assuming you plug into an at least 1 amp charger, this should correct the situation
 ```
-cd /sys/class/power_supply/bq24190-charger/
-sudo nano input_current_limit
+$cd /sys/class/power_supply/bq24190-charger/
+$sudo nano input_current_limit
 ```
+Change value to 900000.
 
-If the phone reboots, this will need to be done again.
+But if the phone reboots, you will need to change it again again. We will do more for the power supply in a following section.
