@@ -6,10 +6,10 @@ This is step by step guide to install PostmarketOS, then  Docker, then Home Assi
 
 # Contents
 
-- [Introduction](#1_Introduction)
-- [Preliminaries](#2 Preliminaries)
-- [PostmarketOS](#3 PostmarketOS)
-- [Docker](#4_Docker)
+- [Introduction](#Introduction)
+- [Preliminaries](#Preliminaries)
+- [PostmarketOS](#PostmarketOS)
+- [Docker](#Docker)
 - [Home Assistant](#HomeAssistant)
 - [Power Supply](#Power_supply)
 - [Wrap Up](#Wrap up)
