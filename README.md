@@ -6,7 +6,7 @@ This is step by step guide to install PostmarketOS, then  Docker, then Home Assi
 
 # Contents
 
-- [Introduction](#'1Introduction')
+- [Introduction](#1_Introduction)
 - [Preliminaries](#2 Preliminaries)
 - [PostmarketOS](#3 PostmarketOS)
 - [Docker](#4_Docker)
