@@ -6,7 +6,7 @@ This is step by step guide to install PostmarketOS, then  Docker, then Home Assi
 
 # Contents
 
-- [Introduction](#Introduction)
+- [Introduction](#1Introduction)
 - [PMbootrap](## PMbootstrap)
 - [PostmarketOS](./3_PostmarketOS.md)
 - [Docker](./4_Docker.md)
@@ -14,7 +14,7 @@ This is step by step guide to install PostmarketOS, then  Docker, then Home Assi
 - [Power Supply](./6_power_supply.md)
 - [Remote Access](./7_swag_dashboard.md)
 
-## Introduction
+## 1 Introduction
 
 When I started with Home Assistant, the first question that arises is what hardware to use. I started with an underpowered old raspberry PI and then moved to an old intel based server.
 For a long time, I was frustrated that I couldn't use old telephones lying in a drawer.
@@ -27,9 +27,9 @@ If you don't have a Nexus5, I hope this guide can provide a guide for the steps 
 
 The setup is surprisingly simple (once you know how...). There is only one installation program. Installing the postmarket operating system, docker and home assistant is simple; about 1 hour if nothing goes wrong (but I have been through it several times). 
 
-Tweaking the power supply is more intricate. PostmarkerOS usually doesn't have power management properly implemented. Make sure you start with a charged battery. Once implemented, with Home assistant, we can fully control the battery,  even disconnect it!
+Tweaking the power supply is more intricate. PostmarketOS usually doesn't have power management properly implemented. Make sure you start with a charged battery. Once implemented, with Home assistant, we can fully control the battery,  even disconnect it!
 
-For a simple server, we don't need display, audio, nor the phone functions. The essentials are a power supply and wifi; Bluetooth is a nice to have.
+For a simple server, we don't need display, audio, nor the phone functions. The essentials are a power supply and wifi; Bluetooth is a nice to have for homeautomation.
 
 The full documentation for PostmarketOS can be found [here](https://wiki.postmarketos.org/wiki/Main_Page)
 
@@ -37,22 +37,22 @@ Disclaimer: I presume you have an old phone that you can afford to bin if things
 
 But so far, during my inept amateurish fumbling down false paths, I have got into some situations where I thought the phone was bricked. But, so far, I have always been able to recover. 
 
-I'm  pretty certain this guide works (today) for a Nexus 5 if followed step by step; but I can't provide further help.
+I'm  pretty certain this guide works (today) for a Nexus 5 if followed step by step; but I can't provide further help for other devices.
  
-Some steps can take a long time; wait, don't panic too fast. If something has gone wrong (probably due to my inadequate explaination or low battery), just simultaneously hold down the power and volume down buttons untill the system reboots. If it doesn't, you're probably out of power.
+Some steps can take a long time with no sign anything is happening; wait, don't panic too fast. If something has gone wrong (probably due to my inadequate explaination or low battery), just simultaneously hold down the power and volume down buttons untill the system reboots. If it doesn't, you're probably out of power.
 
 Let's get started.
 
-### 2) PMbootstrap
+## 2 PMbootstrap
 
-PostmarketOS has an installation program called [PMbootstrap](https://wiki.postmarketos.org/wiki/Pmbootstrap). This takes care of rooting and all the stuff required to install the new system, installation is simple.
+PostmarketOS has an installation program called [PMbootstrap](https://wiki.postmarketos.org/wiki/Pmbootstrap). This takes care of rooting and all the stuff required to install the new system; installation is simple.
 
 However, it only runs on  a linux system. If you already have one at your disposal, no problem, but I wasted a lot of time trying windows WSL (Windows Subsystem for Linux) without success. 
 I eventually installed Ubuntu on an old laptop. 
 
 The following are the steps for Ubuntu (other linux systems have slightly but annoyingly different commands):
 
-### 2.1) Install PMbootstrap
+### 2.1 Install PMbootstrap
 Open a terminal window ( CTRL+ALT+T) and run the following commands:
 ```
 sudo apt update
@@ -70,7 +70,7 @@ You should see the installed version.
 If something has gone wrong, the official instructions can be found [here](
 https://wiki.postmarketos.org/wiki/Installing_pmbootstrap)
 
-### 2.2) Enable USB connection
+### 2.2 Enable USB connection
 
 In order to use a USB cable to communicate between the Android phone and the computer, something called 'USB debugging' needs to be enabled on the phone. 
 
@@ -78,10 +78,10 @@ Go to the phone Settings -> About -> Tap build number repeatedly until developer
 
 A Google search eg ' Nexus 5 enable USB debugging' will give lots of instructions and videos if needed.
 
-### 2.3) USB cable
+### 2.3 USB cable
 I used to think all USB cables were more or less the same. But experience taught me that they are finiky and a source of problems.  A cable might work sometimes, but not other times. If things in the subsequent steps don't go right; try another cable and/or USB port.
 
-### 3) PostmarketOS
+### 3 PostmarketOS
 
 With the PMbootrap program installed on your linux system, it is time to configure and install the Postmarket operating system onto the phone.
 
@@ -92,18 +92,18 @@ The official instructions contain lots and lots  of info which can confuse a beg
 
 Starting from a standard, charged Nexus  5 device...
 
-#### 3.1) Enable Fastboot mode
+#### 3.1 Enable Fastboot mode
 With Nexus 5 device powered off and USB cable unplugged, hold down Volume Down and Power buttons simultaneously for a few seconds, until something called Fastboot Mode screen  appears.   
 
 
-#### 3.2) OEM unlock
+#### 3.2 OEM unlock
 Plug in the USB cable between PC and phone, then on the PC run:
 '''
 $ sudo fastboot oem unlock
 '''
 When prompted on the the phone device, use Volume Up/Down buttons to highlight 'Yes' choice, then press the Power button to select it.   
 
-#### 3.3) Initialization
+#### 3.3 Initialization
 On your PC, run
 ```
 $pmbootstrap init
@@ -117,7 +117,7 @@ User Interface:.        fbkeyboard
       
 You'll be asked for a username . This will later be needed for login to the phone device ( both initial Screen and later SSH)
 
-#### 3.4) Build images
+#### 3.4 Build images
 On your PC, run
 ```
 $ pmbootstrap install
@@ -125,8 +125,8 @@ $ pmbootstrap install
 This builds the boot and system images that are to be installed. 
 You'll be asked to set a password for logging onto the phone device later on. ( Ignore any keymap warning)
 
-#### 3.5) Flash  to phone 
-Ensure device is still in fastboot mode ( ref 1 above), and plugged  in via USB. Then, on the PC, run:
+#### 3.5 Flash  to phone 
+Ensure phone device is still in fastboot mode ( ref 3.1 above), and plugged  in via the USB. Then, on the PC, run:
 ```
 fastboot format system    
 pmbootstrap flasher flash_rootfs --partition userdata
@@ -138,7 +138,7 @@ The format system gave me an error, but can be ignored.
 Wait a while (a couple of minutes) as the phone reboots with PostmarketOS.
 Note: I sometimes got boot error, in that case repeat from step 4 ( I suspect it is something to do with format system error, but I repeated until it worked !)
  
-#### 3.6) Login and enable SSH
+#### 3.6 Login and enable SSH
 With the USB cable still connected, from your PC terminal ; with your user name run
 ```
 $ssh user@172.16.42.1  
@@ -147,7 +147,7 @@ You will be asked for your password from step 4.
 
 Hopefully, you now have control of the phone from your computer.
 
-#### 3.7) Setup WIFI
+#### 3.7 Setup WIFI
 To set up the WIFI, in the SSH session run
 ```
 sudo nmtui
@@ -157,9 +157,9 @@ This gives a 'somewhat' intuitive screen where you  can add your WIFI credential
 
 You'll probably want to set up a static IP address for the phone on your router or preferably using nmtui
 
- Note: I ignorantly tried to install a 64 bit program (Nexus5 is 32bit armv7l) and crashed the system. Afterwards, it gave a random mac address after reboot. This screwed up the static IP address from my router. A static address can be set using nmtui  explained  [here](https://www.tecmint.com/nmtui-configure-network-connection/)
+Note: I ignorantly tried to install a 64 bit program (Nexus5 is 32bit armv7l) and crashed the system. Afterwards, it gave a random mac address after reboot. This screwed up the static IP address from my router. A static address can be set using nmtui  explained  [here](https://www.tecmint.com/nmtui-configure-network-connection/)
 
-#### 3.8) Install Bluetooth
+#### 3.8 Install Bluetooth
 
 I use Homeassistant to read  bluetooth BLE temperature sensors using the 'HACS Passive BLE Monitor' integration using the phone's bluetooth capability.
 
@@ -184,7 +184,7 @@ and almost at the end of all the commented-out configuration options, configure
 autoenable=true
 ```
 
-#### 3.9) Test Wifi 
+#### 3.9 Test Wifi 
 
 Stop the SSH session ( type exit) and disconnect the USB cable.
 From the PC, login using the wifi connection
@@ -194,13 +194,13 @@ $ssh user@192.168.X.XXX:21
 
 where 192.168.X.XXX is the IP address of your phone device. If you haven't setup a static address, use a network scanner to find the (lg-hammerhead) IP address.
 
-#### 3.10) Check reboot
+#### 3.10 Check reboot
 
 Now is a good time to check everything properly restarts after a system start, so run
 ```
 sudo reboot
 ```
-After the phone display comes back, login again and retest ( USB cable unplugged)
+After the phone display comes back, login again and retest using wifi (USB cable unplugged)
 ```
 $ssh user@192.168.X.XXX:21
 ```
@@ -208,7 +208,7 @@ Hopefully, no problems.....
 
 You now have PostmarketOS on the phone
 
-#### 3.11) Footnote:USB Power
+#### 3.11 Footnote:USB Power
 
 This might be a good point to pause but before taking a break, there are a few points to note.
 
@@ -230,7 +230,7 @@ And set the value to 900000.
 
 If you disconnect the power or the phone reboots, this will need to be done again.
 
-### 4 Install Docker
+### 4 Docker
 
 Up to this point, this has been standard PostmarketOS installation.
 
@@ -238,7 +238,7 @@ PostmarketOS supports Docker, so this makes installing Home Assistant (and other
 
  In this short section, we install docker and docker-compose.
 
-#### 4.1) Install Docker
+#### 4.1 Install Docker
 
 From now on, I assume you are connected to the Nexus5 by (wifi) SSH.
 
@@ -255,7 +255,7 @@ sudo reboot
 ```
 Obviously change 'bryan' for your user name...
 
-#### 4.2) Test  Docker
+#### 4.2 Test  Docker
 
 To check docker, run:
 ```
