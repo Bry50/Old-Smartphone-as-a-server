@@ -208,7 +208,7 @@ Hopefully, no problems.....
 
 You now have PostmarketOS on the phone
 
-#### 3.11 Footnote:USB Power
+#### 3.11 Footnote: USB Power
 
 This might be a good point to pause but before taking a break, there are a few points to note.
 
@@ -263,7 +263,7 @@ docker run hello-world
 ```
 This should pull and run a very simple test that prints a message "Hello from Docker" and then exit.
 
-#### 4.3) Clean up
+#### 4.3 Clean up
 
 Assuming all is ok, run:
 ```
@@ -279,7 +279,7 @@ The Home Assistant site gives instructions how to set up using docker-compose [h
 
 In theory, you can follow those instructions. However, I think it is better to create storage volumes first because, if you let  Docker make them, you will not have  permissions to modify them outside of Home assistant.
 
-#### 5.1) Create storage volumes
+#### 5.1 Create storage volumes
 So,  to create the storage volumes on the PostmarkerOS phone I suggest:
 ```
 mkdir ~/volumes
@@ -301,7 +301,7 @@ log_type none
 ```
 ( Ctrl- O & Ctrl-X to save and exit)
 
-#### 5.2) Docker firewall
+#### 5.2 Docker firewall
 
 Docker is designed to be run in a business environment and sets up firewall rules between containers using outdated technology ('iptables').
 
@@ -319,7 +319,7 @@ $ sudo reboot
 (Note: 'sudo rc-update add nftables' would put them back again)
 
 
-#### 5.3) docker-compose
+#### 5.3 docker-compose
 
 The docker-compose.yml file groups all the docker commands needed to load the  systems we want; currently HomeAssistant and MQTT. 
 
@@ -362,7 +362,7 @@ The versions (eg :1.6.13) are optional, but I like to 'freeze' the versions to a
   
 This contains the instructions to pull ( download) the standard docker 'image' to build your working 'container'. The volumes tell it where to store data and the network mode 'host' tells it not to isolate  containers in a separate network as Docker would normally do.
 
-#### 5.4) Docker-compose up
+#### 5.4 Docker-compose up
 
 When run for the first time, the following instruction will cause docker  to pull (download) and extract the files. This is time consuming on the Nexus and needs the battery..
 
@@ -383,12 +383,11 @@ To access Home Assistant, from any machine on your local network, use an interne
 
 You should have access to the normal home assistant log-in screen.
 
-## 6) Power supply
+## 6 Power supply
 
-- id: '1676545714070
 The Nexus5 power  is (mostly) controlled by a bq24192 chip. This section applies to devices with that chip but might provide usefull ideas for other devices.
 
-The PostmarketOS hasn't fully implemented power management. However,  as the Nexus will have a permanent USB adapter power supply, conserving battery charge is not the problem; but we need to not overcharge the battery.
+The PostmarketOS hasn't fully implemented power management. However,  as a server, the Nexus5 will have a permanent USB adapter power supply, conserving battery charge is not the problem; but we need to not overcharge the battery.
 
 In this section, we will create a script that changes some battery related file permissions so that we can actually control (and even disconnect) the battery using Home Assistant (Hass).
 
@@ -396,18 +395,17 @@ But firstly, (as mentioned before) the system does not correctly recognise the p
 
 Assuming that you have pluged the Nexus into a capable power charger, we need to increase the 'input current limitation'.
 
-I found increasing the limit to 1 Amp adequate and can be done by 
+I found increasing the limit to ~1 Amp adequate and can be done by 
 ```
 sudo nano /sys/class/power_supply/bq24190-charger/input_current_limit
 ```
-And set the value to 1000000.
+And set the value to 900000.
 
 Next, we can set up sensors in Hass to
 determine the current battery charge percentage, the current battery voltage and whether the charge type is 'fast' or 'trickle'
 
 ```
 sensor:
-
   - platform: command_line
     name: Nexus Battery Level
     command: "cat /sys/class/power_supply/battery/capacity"
