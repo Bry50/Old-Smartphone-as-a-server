@@ -6,7 +6,7 @@ This is step by step guide to install PostmarketOS, then  Docker, then Home Assi
 
 # Contents
 
-- [Introduction](#Introduction)
+- [Introduction](#1%20Introduction)
 - [Preliminaries](#Preliminaries)
 - [PostmarketOS](#PostmarketOS)
 - [Docker](#Docker)
@@ -14,7 +14,7 @@ This is step by step guide to install PostmarketOS, then  Docker, then Home Assi
 - [Power Supply](#Power_supply)
 - [Wrap Up](#Wrap up)
 
-##  Introduction
+##  1 Introduction
 
 When I started with Home Assistant, the first question that arises is what hardware to use. I started with an underpowered old raspberry PI and then moved to an old intel based server.
 For a long time, I was frustrated that I couldn't use old telephones lying in a drawer.
