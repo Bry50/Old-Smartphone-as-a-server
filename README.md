@@ -7,11 +7,11 @@ This is step by step guide to install PostmarketOS, then  Docker, then Home Assi
 # Contents
 
 - [Introduction](#1Introduction)
-- [PMbootrap](## PMbootstrap)
-- [PostmarketOS](./3_PostmarketOS.md)
-- [Docker](./4_Docker.md)
-- [Home Assistant](./5_Home_Assistant.md)
-- [Power Supply](./6_power_supply.md)
+- [Preliminaries](#2 Preliminaries)
+- [PostmarketOS](#3 PostmarketOS)
+- [Docker](#4_Docker)
+- [Home Assistant](#HomeAssistant)
+- [Power Supply](#Power_supply)
 - [Remote Access](./7_swag_dashboard.md)
 
 ## 1 Introduction
@@ -43,7 +43,7 @@ Some steps can take a long time with no sign anything is happening; wait, don't 
 
 Let's get started.
 
-## 2 PMbootstrap
+## 2 Preliminaries
 
 PostmarketOS has an installation program called [PMbootstrap](https://wiki.postmarketos.org/wiki/Pmbootstrap). This takes care of rooting and all the stuff required to install the new system; installation is simple.
 
