@@ -437,7 +437,7 @@ Then enter the following contents
 # Increase the input current limit
 # IMPORTANT This assumes >1amp USB supply
 chmod 777 /sys/class/power_supply/bq24190-charger/input_current_limit
-echo 1000000 /sys/class/power_supply/bq24190-charger/input_current_limit
+echo 900000 /sys/class/power_supply/bq24190-charger/input_current_limit
 
 # Reduce battery charge voltage to 3.6V
 chmod 777  /sys/class/power_supply/bq24190-charger/constant_charge_voltage
