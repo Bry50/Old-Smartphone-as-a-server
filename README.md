@@ -385,13 +385,13 @@ You should have access to the normal home assistant log-in screen.
 
 ## 6 Power supply
 
-The Nexus5 power  is (mostly) controlled by a bq24192 chip. This section applies to devices with that chip but might provide usefull ideas for other devices.
+The Nexus5 power  is (mostly) controlled by a bq24192 chip. This section applies to devices with that chip but might provide useful ideas for other devices. 
 
 The PostmarketOS hasn't fully implemented power management. However,  as a server, the Nexus5 will have a permanent USB adapter power supply, conserving battery charge is not the problem; but we need to not overcharge the battery.
 
-In this section, we will create a script that changes some battery related file permissions so that we can actually control (and even disconnect) the battery using Home Assistant (Hass).
+In this section, we will create a script that changes some battery related file permissions so that we can actually control (and even disconnect) the battery using Home Assistant (Hass). I suppose the same can be achieved using unix scripts......if you don't use Homeaasistant, you'll need to adapt.
 
-But firstly, (as mentioned before) the system does not correctly recognise the power capacity of the connected USB power supply. It limits the input to 500 mA that a standard PC USB connection can reliably supply. This isn't enough (mine needs about 800 mA) and will eventually run down the battery. 
+Firstly, (as mentioned before) the system does not correctly recognise the power capacity of the connected USB power supply. It limits the input to 500 mA that a standard PC USB connection can reliably supply. This isn't enough (mine needs about 800 mA) and will eventually run down the battery. 
 
 Assuming that you have pluged the Nexus into a capable power charger, we need to increase the 'input current limitation'.
 
