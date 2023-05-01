@@ -4,16 +4,6 @@ An old smartphone can be used as a server by installing PostmarketOS.
 
 This is step by step guide to install PostmarketOS, then  Docker, then Home Assistant onto an old Nexus5 phone and then control the battery charging.
 
-# Contents
-
-- [Introduction](#1%20Introduction)
-- [Preliminaries](#Preliminaries)
-- [PostmarketOS](#PostmarketOS)
-- [Docker](#Docker)
-- [Home Assistant](#HomeAssistant)
-- [Power Supply](#Power_supply)
-- [Wrap Up](#Wrap up)
-
 ##  1 Introduction
 
 When I started with Home Assistant, the first question that arises is what hardware to use. I started with an underpowered old raspberry PI and then moved to an old intel based server.
