@@ -460,7 +460,8 @@ chmod 777 /sys/class/backlight/lcd-backlight/brightness
 echo 0 /sys/class/backlight/lcd-backlight/brightness
 ```
 
-Exit nano saving the file  and make the script executable:
+Exit nano saving the file.
+Make the script executable:
 ```
 sudo chmod u+x /etc/local.d/bq24190-charger.start
 ```
