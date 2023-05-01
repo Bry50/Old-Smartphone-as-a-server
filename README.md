@@ -12,7 +12,7 @@ This is step by step guide to install PostmarketOS, then  Docker, then Home Assi
 - [Docker](#4_Docker)
 - [Home Assistant](#HomeAssistant)
 - [Power Supply](#Power_supply)
-- [Remote Access](./7_swag_dashboard.md)
+- [Wrap Up](#Wrap up)
 
 ## 1 Introduction
 
